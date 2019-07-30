@@ -35,11 +35,25 @@ uiGuessBtn.addEventListener('click', function(){
 
     // Check if won
     if(guess === winningNum) {
+      // Game over - WON
       // Disable input
       uiGuessInput.disbaled = true;
       // Change border color
       uiGuessInput.style.borderColor = 'green';
-      setMessage(`Congratulations ${winningNum} was the correct number, YOU'VE WON!`, 'green')
+      setMessage(`Congratulations ${winningNum} was the correct number, YOU'VE WON!`, 'green');
+    } else {
+      // Wrong num
+      guessesLeft -= 1;
+      if (guessesLeft === 0) {
+        // Game Over - LOST
+      
+        // Game continues - answer was wrong
+        // Disable input
+        uiGuessInput.disbaled = true;
+        // Change border color
+        uiGuessInput.style.borderColor = 'red';
+        setMessage(`Game Over, you've lost. The correct number was ${winningNum}`, 'red');
+      }
     }
 });
 
