@@ -24,3 +24,18 @@ const uiGame = document.querySelector('#game'),
 // Assign UI min and max
 uiMinNum.textContent = min;
 uiMaxNum.textContent = max;
+
+// Listen for guess
+uiGuessBtn.addEventListener('click', function(){
+    let guess = parseInt(uiGuessInput.value);
+
+    if (isNaN(guess) || guess < min || guess > max) {
+      setMessage(`You must enter a number between ${min} and ${max}`, 'red' );
+    } 
+});
+
+// Set message function declaration
+function setMessage(msg, color) {
+  uiMessage.textContent = msg;
+  uiMessage.style.color = color;
+}
