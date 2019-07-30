@@ -8,10 +8,11 @@ GAME FUNCTION:
 */
 
 // Game values
-let min = 1,
-    max = 10,
-    winningNum = 2,
+let min = 10,
+    max = 25,
+    winningNum = Math.floor(Math.random()* (max - min + 1) + min),
     guessesLeft = 3;
+    console.log(winningNum)
 
 // UI Elements
 const uiGame = document.querySelector('#game'),
@@ -53,6 +54,13 @@ uiGuessBtn.addEventListener('click', function(){
     }
 });
 
+// Play again event listener
+game.addEventListener('mousedown', function(e){
+  if (e.target.className === 'play-again') {
+    window.location.reload();
+  }
+});
+
 // Set message function
 function setMessage(msg, color) {
   uiMessage.textContent = msg;
@@ -68,4 +76,8 @@ function gameOver(won, msg) {
   // Change border color
   uiGuessInput.style.borderColor = color;
   setMessage(msg, color);
+
+  // Play Again?
+  uiGuessBtn.value = 'Play Again';
+  uiGuessBtn.className += 'play-again';
 }
