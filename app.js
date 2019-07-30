@@ -46,13 +46,18 @@ uiGuessBtn.addEventListener('click', function(){
       guessesLeft -= 1;
       if (guessesLeft === 0) {
         // Game Over - LOST
-      
-        // Game continues - answer was wrong
         // Disable input
         uiGuessInput.disbaled = true;
         // Change border color
         uiGuessInput.style.borderColor = 'red';
         setMessage(`Game Over, you've lost. The correct number was ${winningNum}`, 'red');
+      } else {
+        // Tell user it's the wrong num
+        setMessage(`${guess} isn't correct, ${guessesLeft} guesses left`, 'red');
+        uiGuessInput.style.borderColor = 'red';
+
+        // Clear Input
+        uiGuessInput.value = '';
       }
     }
 });
