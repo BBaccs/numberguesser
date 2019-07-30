@@ -32,6 +32,15 @@ uiGuessBtn.addEventListener('click', function(){
     if (isNaN(guess) || guess < min || guess > max) {
       setMessage(`You must enter a number between ${min} and ${max}`, 'red' );
     } 
+
+    // Check if won
+    if(guess === winningNum) {
+      // Disable input
+      uiGuessInput.disbaled = true;
+      // Change border color
+      uiGuessInput.style.borderColor = 'green';
+      setMessage(`Congratulations ${winningNum} was the correct number, YOU'VE WON!`, 'green')
+    }
 });
 
 // Set message function declaration
