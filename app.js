@@ -8,11 +8,11 @@ GAME FUNCTION:
 */
 
 // Game values
-let min = 10,
-    max = 25,
+let min = 1,
+    max = 10,
     winningNum = Math.floor(Math.random()* (max - min + 1) + min),
     guessesLeft = 3;
-    console.log(winningNum)
+    console.log(min)
 
 // UI Elements
 const uiGame = document.querySelector('#game'),
@@ -30,12 +30,11 @@ uiMaxNum.textContent = max;
 uiGuessBtn.addEventListener('click', function(){
     let guess = parseInt(uiGuessInput.value);
 
+    // Validate guess
     if (isNaN(guess) || guess < min || guess > max) {
       setMessage(`You must enter a number between ${min} and ${max}`, 'red' );
-    } 
-
-    // Check if won
-    if(guess === winningNum) {
+    }  // Check if won
+    else if (guess === winningNum) {
       // Game over - WON
       gameOver(true, `Congratulations ${winningNum} was the correct number, YOU'VE WON!`);
     } else {
