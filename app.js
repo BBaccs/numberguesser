@@ -10,9 +10,8 @@ GAME FUNCTION:
 // Game values
 let min = 1,
     max = 10,
-    winningNum = Math.floor(Math.random()* (max - min + 1) + min),
+    winningNum = getRandomNumber(min, max),
     guessesLeft = 3;
-    console.log(min)
 
 // UI Elements
 const uiGame = document.querySelector('#game'),
@@ -79,4 +78,9 @@ function gameOver(won, msg) {
   // Play Again?
   uiGuessBtn.value = 'Play Again';
   uiGuessBtn.className += 'play-again';
+}
+
+// Get Random Number
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random()* (max - min + 1) + min);
 }
